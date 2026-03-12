@@ -122,6 +122,7 @@ class Swift:
         rate: int = 60,
         browser: Union[str, None] = None,
         comms: L["websocket", "rtc"] = "websocket",
+        open_tab: bool = True,
         **kwargs,
     ):
         """
@@ -173,6 +174,7 @@ class Swift:
                 self.outq,
                 self.inq,
                 self._servers_running,
+                open_tab = open_tab,
                 browser=browser,
                 comms=self._comms,
             )

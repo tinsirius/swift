@@ -162,11 +162,15 @@ def start_servers(
         # Send the answer to the HTTP server
         outq.put(offer_python)
     else:
-        try:
-            inq.get(timeout=10)
-        except Empty:
-            print("\nCould not connect to the Swift simulator \n")
-            raise
+        if open_tab:
+            try:
+                inq.get(timeout=10)
+            except Empty:
+                print("\nCould not connect to the Swift simulator \n")
+                raise
+        else:
+            print(f"\Please visit http://localhost:{server_port}/?{socket_port} to proceed ... \n")
+            inq.get()
 
     return socket, server
 
