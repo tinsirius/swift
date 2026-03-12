@@ -58,6 +58,7 @@ def start_servers(
     outq: Queue,
     inq: Queue,
     stop_servers,
+    server_port: int = 52000,
     open_tab: bool = True,
     browser: Union[str, None] = None,
     comms: L["websocket", "rtc"] = "websocket",
@@ -99,6 +100,7 @@ def start_servers(
             inq,
             socket_port,
             stop_servers,
+            server_port
         ),
         daemon=True,
     )
@@ -335,8 +337,7 @@ class SwiftSocket:
 
 
 class SwiftServer:
-    def __init__(self, outq, inq, socket_port, run, verbose=False, custom_root=None):
-        server_port = 52000
+    def __init__(self, outq, inq, socket_port, run, server_port, verbose=False, custom_root=None): 
         self.inq = inq
         self.run = run
 
