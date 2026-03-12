@@ -123,6 +123,7 @@ class Swift:
         browser: Union[str, None] = None,
         comms: L["websocket", "rtc"] = "websocket",
         open_tab: bool = True,
+        server_port = 52000,
         **kwargs,
     ):
         """
@@ -175,6 +176,7 @@ class Swift:
                 self.inq,
                 self._servers_running,
                 open_tab = open_tab,
+                server_port = server_port,
                 browser=browser,
                 comms=self._comms,
             )
